@@ -15,8 +15,8 @@ CREATE TABLE Autor(
 CREATE TABLE Livro_Autor(
 	la_l_idLivro INT NOT NULL,
     la_a_idAutor INT NOT NULL,
-    PRIMARY KEY(la_l_idLivro, la_a_idAuor),
-    FOREIGN KEY (la_l_idLivro) REFERENCES Livro (l_id_livro),
+    PRIMARY KEY(la_l_idLivro, la_a_idAutor),
+    FOREIGN KEY (la_l_idLivro) REFERENCES Livro (l_idLivro),
     FOREIGN KEY (la_a_idAutor) REFERENCES Autor (a_idAutor));
     
 CREATE TABLE Cliente(
