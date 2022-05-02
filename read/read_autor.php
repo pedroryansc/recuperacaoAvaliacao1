@@ -12,7 +12,7 @@ Autor: <br>
     <?php
         $pdo = Conexao::getInstance();
         $consulta = $pdo->query("SELECT * FROM Autor
-                                ORDER BY a_idAutor");
+                                ORDER BY a_nome");
         while ($linha = $consulta->fetch(PDO::FETCH_BOTH)) {
     ?>
     <tr>
