@@ -29,7 +29,7 @@
                 throw new Exception("Valor total inválido: $valor_total");
         }
         public function setDesconto($desconto){
-            if($desconto >= 1)
+            if($desconto >= 0 && $desconto <= 100)
                 $this->v_desconto = $desconto;
             else
                 throw new Exception("Desconto inválido: $desconto");

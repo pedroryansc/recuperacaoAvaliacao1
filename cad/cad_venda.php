@@ -27,7 +27,18 @@
         <br>
         Cliente: <select name="cliente">
                     <?php
-                        echo lista_cliente(0);
+                        if($acao == "editar"){
+                            $pdo = Conexao::getInstance(); 
+                            $consulta = $pdo->query("SELECT * FROM Cliente");
+                            while ($linha = $consulta->fetch(PDO::FETCH_BOTH)) {
+                    ?>
+                    <option value="<?php echo $linha["c_idCliente"]; ?>" <?php if($vetor[3] == $linha["c_idCliente"]) echo "selected"; ?>>
+                        <?php echo $linha["c_nome"]; ?>
+                    </option>
+                    <?php
+                            }
+                        } else
+                            echo lista_cliente(0);
                     ?>
                 </select><br>
         <br>
