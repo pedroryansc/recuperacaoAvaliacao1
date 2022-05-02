@@ -19,11 +19,33 @@
         public function getIsdn(){ return $this->l_isdn; }
         public function getPreco(){ return $this->l_preco; }
 
-        public function setId($idLivro){ $this->l_idLivro = $idLivro; }
-        public function setTitulo($titulo){ $this->l_titulo = $titulo; }
-        public function setAnoPublicacao($ano_publicacao){ $this->l_ano_publicacao = $ano_publicacao; }
-        public function setIsdn($isdn){ $this->l_isdn = $isdn; }
-        public function setPreco($preco){ $this->l_preco = $preco; }
+        public function setId($idLivro){
+            $this->l_idLivro = $idLivro;
+        }
+        public function setTitulo($titulo){
+            if($titulo <> "")
+                $this->l_titulo = $titulo;
+            else
+                throw new Exception("Título inválido: $titulo");
+        }
+        public function setAnoPublicacao($ano_publicacao){
+            if($ano_publicacao <> "")
+                $this->l_ano_publicacao = $ano_publicacao;
+            else
+                throw new Exception("Ano de publicação inválido: $ano_publicacao");
+        }
+        public function setIsdn($isdn){
+            if($isdn <> "")
+                $this->l_isdn = $isdn;
+            else
+                throw new Exception("ISDN inválido: $isdn");
+        }
+        public function setPreco($preco){
+            if($preco > 0)
+                $this->l_preco = $preco;
+            else
+                throw new Exception("Preço inválido: $preco");
+        }
 
         public function insere(){
             require_once("../conf/Conexao.php");

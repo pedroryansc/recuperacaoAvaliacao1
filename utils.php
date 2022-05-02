@@ -12,17 +12,20 @@
     }
 
     function lista_livro($id){
-        $livro = new Livro("", "", "", "", "");
+        $livro = new Livro(1, 1, 1, 1, 1);
         $lista = $livro->buscar($id);
         foreach($lista as $vetor)
             return $vetor;
     }
 
     function lista_venda($id){
-
+        $venda = new Venda(1, 1, 1, 1, 1);
+        $lista = $venda->buscar($id);
+        foreach($lista as $vetor)
+            return $vetor;
     }
     function lista_cliente($id){
-        $venda = new Venda("", "", "", "");
+        $venda = new Venda(1, 1, 1, 1, 1);
         $lista = $venda->buscarCliente();
         return exibir_como_select(array("c_idCliente", "c_nome"), $lista);
     }

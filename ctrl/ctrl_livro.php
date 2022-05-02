@@ -5,16 +5,12 @@
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
     if($acao == "excluir"){
-        $livro = new Livro("", "", "", "", "");
-        $livro->excluir($id);
-        header("location:../index.php");
-        
         try{
-            $contaCorrente = new ContaCorrente(1, 1, 1, 1);
-            $contaCorrente->excluir($id);
-            header("location:../../index.php");
+            $livro = new Livro(1, 1, 1, 1, 1);
+            $livro->excluir($id);
+            header("location:../index.php");
         } catch(Exception $e){
-            echo "<h1>Erro ao excluir conta.</h1>
+            echo "<h1>Erro ao excluir livro.</h1>
             <br>
             Erro:".$e->getMessage();
         }
@@ -28,13 +24,25 @@
         $isdn = isset($_POST["isdn"]) ? $_POST["isdn"] : "";
         $preco = isset($_POST["preco"]) ? $_POST["preco"] : 0;
         
-        $livro = new Livro(0, $titulo, $ano_publicacao, $isdn, $preco);
+        $livro = new Livro($id, $titulo, $ano_publicacao, $isdn, $preco);
         if($id == 0){
-            $livro->insere();
-            header("location:../index.php");
+            try{
+                $livro->insere();
+                header("location:../index.php");
+            } catch(Exception $e){
+                echo "<h1>Erro ao cadastrar livro.</h1>
+                <br>
+                Erro:".$e->getMessage();
+            }
         } else{
-            $livro->editar($id);
-            header("location:../index.php");
+            try{
+                $livro->editar($id);
+                header("location:../index.php");
+            } catch(Exception $e){
+                echo "<h1>Erro ao editar livro.</h1>
+                <br>
+                Erro:".$e->getMessage();
+            }
         }
     }
 ?>

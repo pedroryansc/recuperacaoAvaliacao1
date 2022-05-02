@@ -7,6 +7,7 @@ Venda: <br>
         <th>Valor total</th>
         <th>Desconto</th>
         <th>Cliente (ID)</th>
+        <th>Data da venda</th>
         <th>Editar</th>
         <th>Excluir</th>
     </tr>
@@ -21,6 +22,7 @@ Venda: <br>
         <td><?php echo "R$ ".number_format($linha["v_valor_total_venda"], 2, ",", "."); ?></td>
         <td><?php echo number_format($linha["v_desconto"], 2, ",", ".")."%"; ?></td>
         <td><?php echo $linha["v_c_idCliente"]; ?></td>
+        <td><?php echo $linha["iv_data_venda"]; ?></td>
         <td><a href="cad/cad_venda.php?acao=editar&id=<?php echo $linha['v_idVenda'];?>">Editar</a></td>
         <td><a href="javascript:excluirRegistro('ctrl/ctrl_venda.php?acao=excluir&id=<?php echo $linha['v_idVenda']; ?>')">Excluir</a><br></td>
     </tr>

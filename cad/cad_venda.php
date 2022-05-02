@@ -31,6 +31,8 @@
                     ?>
                 </select><br>
         <br>
+        Data da venda: <input type="text" name="data_venda" value="<?php if($acao == "editar") echo $vetor[4]; ?>"><br>
+        <br>
         <button type="submit" name="acao" value="salvar">Salvar</button>
     </form>
 </body>
