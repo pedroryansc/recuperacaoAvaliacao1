@@ -21,9 +21,9 @@
     <?php echo $title; ?><br>
     <br>
     <form action="../ctrl/ctrl_venda.php?id=<?php echo $id; ?>" method="post">
-        Valor total: R$<input type="text" name="valor_total" value="<?php if($acao == "editar") echo $vetor[1]; ?>"><br>
+        Valor: R$<input type="text" name="valor" value="<?php if($acao == "editar") echo $vetor[1]; ?>"><br>
         <br>
-        Desconto: <input type="text" name="desconto" value="<?php if($acao == "editar") echo $vetor[2]; ?>">%<br>
+        Desconto: R$<input type="text" name="desconto" value="<?php if($acao == "editar") echo $vetor[2]; ?>"><br>
         <br>
         Cliente: <select name="cliente">
                     <?php

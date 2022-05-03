@@ -19,8 +19,9 @@
     $acao = isset($_POST["acao"]) ? $_POST["acao"] : "";
 
     if($acao == "salvar"){
-        $valor_total = isset($_POST["valor_total"]) ? $_POST["valor_total"] : 0;
+        $valor = isset($_POST["valor"]) ? $_POST["valor"] : 0;
         $desconto = isset($_POST["desconto"]) ? $_POST["desconto"] : 0;
+        $valor_total = $valor - $desconto;
         $cliente = isset($_POST["cliente"]) ? $_POST["cliente"] : 0;
         $data_venda = isset($_POST["data_venda"]) ? $_POST["data_venda"] : "";
 
