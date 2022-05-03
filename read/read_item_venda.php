@@ -4,7 +4,7 @@ Item e Venda: <br>
 <table border="1">
     <tr>
         <th>Venda (ID)</th>
-        <th>Venda (Valor total com desconto)</th>
+        <th>Venda (Valor total)</th>
         <th>Venda (Desconto)</th>
         <th>Livro (ID)</th>
         <th>Livro (Título)</th>
@@ -25,7 +25,7 @@ Item e Venda: <br>
     <tr>
         <td><?php echo $linha["v_idVenda"]; ?></td>
         <td><?php echo "R$ ".number_format($linha["v_valor_total_venda"], 2, ",", "."); ?></td>
-        <td><?php echo number_format($linha["v_desconto"], 2, ",", ".")."%"; ?>
+        <td><?php echo "R$ ".number_format($linha["v_desconto"], 2, ",", "."); ?>
         <td><?php echo $linha["l_idLivro"]; ?></td>
         <td><?php echo $linha["l_titulo"]; ?></td>
         <td><?php echo $linha["iv_quantidade"]; ?></td>
