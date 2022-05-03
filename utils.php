@@ -5,6 +5,7 @@
     require_once("class/LivroAutor.php");
     require_once("class/Cliente.php");
     require_once("class/Venda.php");
+    require_once("class/ItemVenda.php");
 
     function exibir_como_select($chave, $dados){
         $str = "<option value=0>Escolha</option>";
@@ -47,7 +48,17 @@
     function lista_venda($id){
         $venda = new Venda(1, 1, 1, 1, 1);
         $lista = $venda->buscar($id);
-        foreach($lista as $vetor)
+        if($id != 0){
+            foreach($lista as $vetor)
+                return $vetor;
+        } else
+            return exibir_como_select(array("v_idVenda", "v_idVenda"), $lista);
+    }
+
+    function lista_item_venda($oldVenda, $oldItem){
+        $item_venda = new ItemVenda(1, 1, 1, 1);
+        $lista = $item_venda->buscar($oldVenda, $oldItem);
+        foreach($lista as $vetor);
             return $vetor;
     }
 ?>
