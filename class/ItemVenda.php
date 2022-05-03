@@ -87,5 +87,16 @@
             $stmt->bindParam(":oldItem", $oldItem);
             return $stmt->execute();
         }
+
+        public function adicionarItem($vetor){
+            $novoTotal = $vetor[1] + $this->iv_valor_total_item;
+            require_once("../conf/Conexao.php");
+            $query = "UPDATE Venda SET v_valor_total_venda = :valor_total_venda WHERE v_idVenda = :id";
+            $conexao = Conexao::getInstance();
+            $stmt = $conexao->prepare($query);
+            $stmt->bindParam(":valor_total_venda", $novoTotal);
+            $stmt->bindParam(":id", $this->iv_v_idVenda);
+            return $stmt->execute();
+        }
     }
 ?>

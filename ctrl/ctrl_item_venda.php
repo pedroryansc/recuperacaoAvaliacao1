@@ -1,4 +1,6 @@
 <?php
+    require_once("../utils.php");
+
     require_once("../class/ItemVenda.php");
     
     $acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
@@ -30,6 +32,8 @@
         if($id == 0){
             try{
                 $item_venda->insere();
+                $vetor = lista_venda($newVenda);
+                $item_venda->adicionarItem($vetor);
                 header("location:../index.php");
             }catch(Exception $e){
                 echo "<h1>Erro ao cadastrar relacionamento entre item e venda.</h1>
