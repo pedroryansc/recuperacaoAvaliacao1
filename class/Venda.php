@@ -91,15 +91,5 @@
             $stmt->bindParam(":id", $id);
             return $stmt->execute();
         }
-
-        public function buscarCliente(){
-            require_once("../conf/Conexao.php");
-            $query = "SELECT * FROM Cliente";
-            $conexao = Conexao::getInstance();
-            $stmt = $conexao->prepare($query);
-            if($stmt->execute())
-                return $stmt->fetchAll(); 
-            return false;
-        }
     }
 ?>

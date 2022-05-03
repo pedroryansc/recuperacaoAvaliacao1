@@ -3,6 +3,7 @@
     require_once("class/Livro.php");
     require_once("class/Autor.php");
     require_once("class/LivroAutor.php");
+    require_once("class/Cliente.php");
     require_once("class/Venda.php");
 
     function exibir_como_select($chave, $dados){
@@ -34,9 +35,13 @@
     }
 
     function lista_cliente($id){
-        $venda = new Venda(1, 1, 1, 1, 1);
-        $lista = $venda->buscarCliente();
-        return exibir_como_select(array("c_idCliente", "c_nome"), $lista);
+        $cliente = new Cliente(1, 1, 1, 1);
+        $lista = $cliente->buscar($id);
+        if($id != 0){
+            foreach($lista as $vetor)
+                return $vetor;
+        } else
+            return exibir_como_select(array("c_idCliente", "c_nome"), $lista);
     }
 
     function lista_venda($id){
