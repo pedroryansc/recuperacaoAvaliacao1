@@ -95,5 +95,22 @@
             $stmt->bindParam(":id", $id);
             return $stmt->execute();
         }
+
+        public function listarVenda(){
+            require_once("../conf/Conexao.php");
+            $query = "SELECT * 
+                    FROM Cliente JOIN Venda ON v_c_idCliente = c_idCliente JOIN
+                        Item_venda ON iv_v_idVenda = v_idVenda JOIN
+                        Livro ON iv_l_idLivro = l_idLivro
+                    WHERE c_idCliente = :idCliente
+                    AND v_idVenda = :idVenda
+                    AND l_idLivro = :idLivro";
+            $conexao = Conexao::getInstance();
+            $stmt = $conexao->prepare($query);
+            $stmt->bindParam("idCliente", $cliente[0]);
+            $stmt->bindParam("idVenda", $venda[0]);
+            $stmt->bindParam("idLivro", $livro[0]);
+            $stmt->execute();
+        }
     }
 ?>

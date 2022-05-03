@@ -10,6 +10,7 @@ Item e Venda: <br>
         <th>Livro (Título)</th>
         <th>Quantidade</th>
         <th>Item (Valor total)</th>
+        <th>Listar Pedido</th>
         <th>Editar</th>
         <th>Excluir</th>
     </tr>
@@ -30,6 +31,7 @@ Item e Venda: <br>
         <td><?php echo $linha["l_titulo"]; ?></td>
         <td><?php echo $linha["iv_quantidade"]; ?></td>
         <td><?php echo "R$ ".number_format($linha["iv_valor_total_item"], 2, ",", "."); ?></td>
+        <td><a href="listarPedido.php">Listar pedido</a></td>
         <td><a href="cad/cad_item_venda.php?acao=editar&id=<?php echo $i; ?>&item=<?php echo $linha["l_idLivro"]; ?>&venda=<?php echo $linha['v_idVenda']; ?>">Editar</a></td>
         <td><a href="javascript:excluirRegistro('ctrl/ctrl_item_venda.php?acao=excluir&item=<?php echo $linha['l_idLivro']; ?>&venda=<?php echo $linha['v_idVenda']; ?>')">Excluir</a><br></td>
     </tr>
