@@ -2,6 +2,7 @@
 
     require_once("class/Livro.php");
     require_once("class/Autor.php");
+    require_once("class/LivroAutor.php");
     require_once("class/Venda.php");
 
     function exibir_como_select($chave, $dados){
@@ -15,15 +16,21 @@
     function lista_livro($id){
         $livro = new Livro(1, 1, 1, 1, 1);
         $lista = $livro->buscar($id);
-        foreach($lista as $vetor)
-            return $vetor;
+        if($id != 0){
+            foreach($lista as $vetor)
+                return $vetor;
+        } else
+            return exibir_como_select(array("l_idLivro", "l_titulo"), $lista);
     }
 
     function lista_autor($id){
         $autor = new Autor(1, 1, 1);
         $lista = $autor->buscar($id);
-        foreach($lista as $vetor)
-            return $vetor;
+        if($id != 0){
+            foreach($lista as $vetor)
+                return $vetor;
+        } else
+            return exibir_como_select(array("a_idAutor", "a_sobrenome"), $lista);
     }
 
     function lista_cliente($id){

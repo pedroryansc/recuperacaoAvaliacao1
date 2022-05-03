@@ -44,7 +44,7 @@
             $query = "SELECT * FROM Autor";
             $conexao = Conexao::getInstance();
             $stmt = $conexao->prepare($query);
-            if($id != ""){
+            if($id != 0){
                 $query .= " WHERE a_idAutor = :id";
                 $stmt = $conexao->prepare($query);
                 $stmt->bindParam(":id", $id);

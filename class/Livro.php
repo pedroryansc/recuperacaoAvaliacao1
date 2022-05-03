@@ -61,10 +61,14 @@
         }
         public function buscar($id){
             require_once("../conf/Conexao.php");
-            $query = "SELECT * FROM Livro WHERE l_idLivro = :id";
+            $query = "SELECT * FROM Livro";
             $conexao = Conexao::getInstance();
             $stmt = $conexao->prepare($query);
-            $stmt->bindParam(":id", $id);
+            if($id != 0){
+                $query .= " WHERE l_idLivro = :id";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindParam(":id", $id);
+            }
             if($stmt->execute())
                 return $stmt->fetchAll(); 
             return false;
