@@ -93,21 +93,49 @@
             return $stmt->execute();
         }
 
-        /*public function listarVenda(){
-            require_once("../conf/Conexao.php");
-            $query = "SELECT * 
-                    FROM Cliente JOIN Venda ON v_c_idCliente = c_idCliente JOIN
-                        Item_venda ON iv_v_idVenda = v_idVenda JOIN
-                        Livro ON iv_l_idLivro = l_idLivro
-                    WHERE c_idCliente = :idCliente
-                    AND v_idVenda = :idVenda
-                    AND l_idLivro = :idLivro";
-            $conexao = Conexao::getInstance();
-            $stmt = $conexao->prepare($query);
-            $stmt->bindParam("idCliente", $cliente[0]);
-            $stmt->bindParam("idVenda", $venda[0]);
-            $stmt->bindParam("idLivro", $livro[0]);
-            $stmt->execute();
-        }*/
+        public function listarVenda($vetorVenda, $vetorCliente, $vetorLivro, $vetorItemVenda){
+            $str = "Venda: {$vetorVenda[0]} Cliente: {$vetorCliente[1]} <br>
+                    ================================ <br>
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>| Título</td>
+                            <td>| Qtd</td>
+                            <td>| Valor Unitário</td>
+                            <td>| Valor Total</td>
+                        </tr>";
+            $total = 0;
+            for($x = 0; $x < count($vetorItemVenda); $x ++){
+                for($y = 0; $y < count($vetorLivro); $y ++){
+                    if($vetorLivro[$y][0] == $vetorItemVenda[$x][1])
+                        break;
+                }
+                $str .= "<tr>
+                            <td>{$vetorLivro[$y][0]}</td>
+                            <td>| {$vetorLivro[$y][1]}</td>
+                            <td>| {$vetorItemVenda[$x][2]}</td>
+                            <td>| {$vetorLivro[$y][4]}</td>
+                            <td>| {$vetorItemVenda[$x][3]}</td>
+                        </tr>";
+                $total = $total + $vetorItemVenda[$x][3];
+            }
+            $str .= "</table>
+                    ------------------------------------------------------- <br>
+                    <table>
+                        <tr>
+                            <td>Total:</td>
+                            <td>".number_format($total, 2)."</td>
+                        </tr>
+                        <tr>
+                            <td>Desconto:</td>
+                            <td>{$vetorVenda[2]}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Venda:</td>
+                            <td>{$vetorVenda[1]}</td>
+                        </tr>
+                    </table>";
+            return $str;
+        }
     }
 ?>
