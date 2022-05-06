@@ -93,7 +93,7 @@
             return $stmt->execute();
         }
 
-        public function listarVenda(){
+        /*public function listarVenda(){
             require_once("../conf/Conexao.php");
             $query = "SELECT * 
                     FROM Cliente JOIN Venda ON v_c_idCliente = c_idCliente JOIN
@@ -108,6 +108,6 @@
             $stmt->bindParam("idVenda", $venda[0]);
             $stmt->bindParam("idLivro", $livro[0]);
             $stmt->execute();
-        }
+        }*/
     }
 ?>
