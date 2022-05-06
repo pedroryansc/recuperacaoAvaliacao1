@@ -15,12 +15,14 @@
         return $str;
     }
 
-    function lista_livro($id){
+    function lista_livro($id, $vetorLivro){
         $livro = new Livro(1, 1, 1, 1, 1);
         $lista = $livro->buscar($id);
         if($id != 0){
             foreach($lista as $vetor)
                 return $vetor;
+        } else if($vetorLivro == 1){
+            return $lista;
         } else
             return exibir_como_select(array("l_idLivro", "l_titulo"), $lista);
     }
@@ -58,7 +60,10 @@
     function lista_item_venda($oldVenda, $oldItem){
         $item_venda = new ItemVenda(1, 1, 1, 1);
         $lista = $item_venda->buscar($oldVenda, $oldItem);
-        foreach($lista as $vetor);
-            return $vetor;
+        if($oldItem != 0){
+            foreach($lista as $vetor)
+                return $vetor;
+        }
+        return $lista;
     }
 ?>

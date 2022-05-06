@@ -54,11 +54,15 @@
         }
         public function buscar($oldVenda, $oldItem){
             require_once("../conf/Conexao.php");
-            $query = "SELECT * FROM Item_venda WHERE iv_v_idVenda = :oldVenda AND iv_l_idLivro = :oldItem";
+            $query = "SELECT * FROM Item_venda WHERE iv_v_idVenda = :oldVenda";
             $conexao = Conexao::getInstance();
             $stmt = $conexao->prepare($query);
+            if($oldItem != 0){
+                $query .= " AND iv_l_idLivro = :oldItem";
+                $stmt = $conexao->prepare($query);
+                $stmt->bindParam(":oldItem", $oldItem);
+            }
             $stmt->bindParam(":oldVenda", $oldVenda);
-            $stmt->bindParam(":oldItem", $oldItem);
             if($stmt->execute())
                 return $stmt->fetchAll(); 
             return false;

@@ -23,10 +23,7 @@
             $this->v_idVenda = $idVenda;
         }
         public function setValorTotal($valor_total){
-            if($valor_total >= 0)
-                $this->v_valor_total_venda = $valor_total;
-            else
-                throw new Exception("Valor total inválido: $valor_total");
+            $this->v_valor_total_venda = $valor_total;
         }
         public function setDesconto($desconto){
             if($desconto >= 0 && $desconto <= 100)

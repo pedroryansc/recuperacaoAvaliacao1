@@ -37,7 +37,7 @@
                             <?php
                                     }
                                 } else
-                                    echo lista_livro(0);
+                                    echo lista_livro(0, 0);
                             ?>
                         </select><br>
         <br>
